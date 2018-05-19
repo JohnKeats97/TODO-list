@@ -9,9 +9,11 @@ class AdminController
     constructor(view)
     {
         this.view = view;
+        this.active = 3;
+        this.complited = 4;
     }
 
-    showAddSetting()
+    showAdd()
     {
         this.view.changeData({title: 1, menus: []});
         this.buttonListener();
@@ -20,168 +22,74 @@ class AdminController
         {
             let name = document.querySelectorAll(".name-AddTest")[0];
             let text = document.querySelectorAll(".text-AddTest")[0];
-            let answer = document.querySelectorAll(".answer-AddTest")[0];
+            let comment = document.querySelectorAll(".answer-AddTest")[0];
             name = name.value.toString().trim();
             text = text.value.toString().trim();
-            answer = answer.value.toString().trim();
-            if (name && text && answer) {
+            comment = comment.value.toString().trim();
+            if (name && text) {
                 let loader = new Loader();
                 loader.show();
-                Services.addTestAdmin(name, text, answer)
-                    .then(() => {
-                        loader.hide();
-                        new MessageBox("Задание добавлено");
-                    })
-                    .catch(error => {
-                        loader.hide();
-                        new MessageBox("Невозможно добавить задание");
-                    });
+                Services.add(name, text, comment);
+                loader.hide();
+                new MessageBox("Действие добавлено");
             }
         });
     }
 
-    showChangeDeleteSettings() {
+    showToDo(mode = 2) {
         let loader = new Loader();
         loader.show();
-        Services.getTestAdmin()
-            .then(function(result)
-            {
-                loader.hide();
-                result = result.reverse();
-                this.view.changeData({title: 2, menus: result});
-                this.buttonListener();
+        let result = Services.get();
+        result = result.reverse();
+        this.view.changeData({title: mode, menus: result});
+        this.buttonListener();
+        loader.hide();
 
-                let deleteButtons = document.querySelectorAll(".adminForm__button-delete");
-                deleteButtons.forEach((item) =>
-                {
-                    item.addEventListener('click', ()=>{
-                        let id = item.dataset.id;
-                        let test = document.getElementById(id);
-                        if (test) {
-                            let loader = new Loader();
-                            loader.show();
-                            Services.deleteTestAdmin(id)
-                                .then((result) => {
-                                    loader.hide();
-                                    test.remove();
-                                })
-                                .catch(error => {
-                                    loader.hide();
-                                    new MessageBox("Невозможно удалить задание");
-                                });
-                        }
-
-                    });
-                });
-
-                let changeButtons = document.querySelectorAll(".adminForm__button-change");
-                changeButtons.forEach((item) =>
-                {
-                    item.addEventListener('click', ()=>{
-                        let id = item.dataset.id;
-                        let test = document.getElementById(id);
-                        if (test) {
-                            let name = test.childNodes[0].value;
-                            let text = test.childNodes[1].value;
-                            let answer = test.childNodes[2].value;
-                            name = name.toString().trim();
-                            text = text.toString().trim();
-                            answer = answer.toString().trim();
-                            if (name && text && answer) {
-                                let loader = new Loader();
-                                loader.show();
-                                Services.changeTestAdmin(id, name, text, answer)
-                                    .then((result) => {
-                                        loader.hide();
-                                        new MessageBox("Изменения сохранены");
-                                    })
-                                    .catch(error => {
-                                        loader.hide();
-                                        new MessageBox("Невозможно изменить задание");
-                                    });
-                            }
-                        }
-                    });
-                });
-            }.bind(this))
-            .catch(() =>
-            {
-                loader.hide();
-                new MessageBox("Ошибка соединения");
+        let deleteButtons = document.querySelectorAll(".adminForm__button-delete");
+        deleteButtons.forEach((item) => {
+            item.addEventListener('click', () => {
+                let id = item.dataset.id;
+                let task = document.getElementById(id);
+                if (task) {
+                    let loader = new Loader();
+                    loader.show();
+                    Services.delete(id);
+                    task.remove();
+                    loader.hide();
+                    new MessageBox("Действие удалено");
+                }
             });
+        });
+
+        let changeButtons = document.querySelectorAll(".adminForm__button-change");
+        changeButtons.forEach((item) => {
+            item.addEventListener('click', () => {
+                let id = item.dataset.id;
+                let task = document.getElementById(id);
+                if (task) {
+                    let name = task.childNodes[0].value;
+                    let text = task.childNodes[1].value;
+                    let comment = task.childNodes[2].value;
+                    let completed = task.childNodes[3].childNodes[2].childNodes[1].checked;
+                    name = name.toString().trim();
+                    text = text.toString().trim();
+                    comment = comment.toString().trim();
+                    if (name && text) {
+                        let loader = new Loader();
+                        loader.show();
+                        Services.change(id, name, text, completed, comment);
+                        loader.hide();
+                        this.showToDo(mode);
+                        new MessageBox("Действие изменено");
+                    }
+                }
+            });
+        });
+
     }
 
 
-    showTimeSettings() {
-        let loader = new Loader();
-        loader.show();
-        Services.getTestAdmin()
-            .then(function(result)
-            {
-                loader.hide();
-                result = result.reverse();
-                this.view.changeData({title: 2, menus: result});
-                this.buttonListener();
 
-                let deleteButtons = document.querySelectorAll(".adminForm__button-delete");
-                deleteButtons.forEach((item) =>
-                {
-                    item.addEventListener('click', ()=>{
-                        let id = item.dataset.id;
-                        let test = document.getElementById(id);
-                        if (test) {
-                            let loader = new Loader();
-                            loader.show();
-                            Services.deleteTestAdmin(id)
-                                .then((result) => {
-                                    loader.hide();
-                                    test.remove();
-                                })
-                                .catch(error => {
-                                    loader.hide();
-                                    new MessageBox("Невозможно удалить задание");
-                                });
-                        }
-
-                    });
-                });
-
-                let changeButtons = document.querySelectorAll(".adminForm__button-change");
-                changeButtons.forEach((item) =>
-                {
-                    item.addEventListener('click', ()=>{
-                        let id = item.dataset.id;
-                        let test = document.getElementById(id);
-                        if (test) {
-                            let name = test.childNodes[0].value;
-                            let text = test.childNodes[1].value;
-                            let answer = test.childNodes[2].value;
-                            name = name.toString().trim();
-                            text = text.toString().trim();
-                            answer = answer.toString().trim();
-                            if (name && text && answer) {
-                                let loader = new Loader();
-                                loader.show();
-                                Services.changeTestAdmin(id, name, text, answer)
-                                    .then((result) => {
-                                        loader.hide();
-                                        new MessageBox("Изменения сохранены");
-                                    })
-                                    .catch(error => {
-                                        loader.hide();
-                                        new MessageBox("Невозможно изменить задание");
-                                    });
-                            }
-                        }
-                    });
-                });
-            }.bind(this))
-            .catch(() =>
-            {
-                loader.hide();
-                new MessageBox("Ошибка соединения");
-            });
-    }
 
     onShow()
     {
@@ -190,16 +98,16 @@ class AdminController
     }
 
     buttonListener() {
-        let addTest = document.querySelectorAll(".button-add")[0];
-        addTest.addEventListener('click', function () {
-            this.showAddSetting();
+        let _add = document.querySelectorAll(".button-add")[0];
+        _add.addEventListener('click', function () {
+            this.showAdd();
         }.bind(this));
-        let changeDeleteTest = document.querySelectorAll(".button-all")[0];
-        changeDeleteTest.addEventListener('click', function () {this.showChangeDeleteSettings()}.bind(this));
-        let changeTimeTest = document.querySelectorAll(".button-active")[0];
-        changeTimeTest.addEventListener('click', function () {this.showTimeSettings()}.bind(this));
-        let changeTimeTest2 = document.querySelectorAll(".button-completed")[0];
-        changeTimeTest2.addEventListener('click', function () {this.showTimeSettings()}.bind(this));
+        let _all = document.querySelectorAll(".button-all")[0];
+        _all.addEventListener('click', function () {this.showToDo()}.bind(this));
+        let _active = document.querySelectorAll(".button-active")[0];
+        _active.addEventListener('click', function () {this.showToDo(this.active)}.bind(this));
+        let _completed = document.querySelectorAll(".button-completed")[0];
+        _completed.addEventListener('click', function () {this.showToDo(this.complited)}.bind(this));
     }
 
     hide()
@@ -221,7 +129,7 @@ class AdminController
         this.onShow();
         loader.hide();
         this.view.show();
-        this.showChangeDeleteSettings()
+        this.showToDo()
     }
 
     goBackHandler()

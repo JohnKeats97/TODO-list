@@ -9,87 +9,78 @@ import Http from "./Http/http.js";
 
 class Services
 {
-    static getTime() {
-        return Http.FetchGet("/time");
-    }
 
-    static setTime(start, stop) {
-        return Http.FetchPost("/time", {"start": start, "stop": stop});
-    }
-
-    static getTestAdmin()
+    static add(name, text, comment = "")
     {
-        return Http.FetchGet("/test-admin");
+        let all = localStorage["all"];
+        if(!all)
+            all = JSON.stringify({all:[], newId: 0});
+        all = JSON.parse(all);
+        let add = {
+            id: all.newId,
+            name: name,
+            text:text,
+            comment: comment,
+            completed: false
+        };
+        all.all.push(add);
+        all.newId += 1;
+        localStorage["all"] =JSON.stringify(all);
     }
 
-    static getTest()
+    static delete(id)
     {
-        return Http.FetchGet("/test");
+        let all = localStorage["all"];
+        if(!all)
+            all = JSON.stringify({all:[], newId: 0});
+        all = JSON.parse(all);
+        let all_tasks = all.all;
+        let index = -1;
+        for (let i = 0; i<all_tasks.length; i++) {
+            if (all_tasks[i].id == id) {
+                index = i;
+                break;
+            }
+        }
+        all_tasks.splice(index,1);
+        all.all = all_tasks;
+        localStorage["all"] =JSON.stringify(all);
     }
 
-    static getUserTest()
+    static change(id, name, text, completed, comment = "")
     {
-        return Http.FetchGet("/user-test");
+        let all = localStorage["all"];
+        if(!all)
+            all = JSON.stringify({all:[], newId: 0});
+        all = JSON.parse(all);
+        let all_tasks = all.all;
+        let index = -1;
+        for (let i = 0; i<all_tasks.length; i++) {
+            if (all_tasks[i].id == id) {
+                index = i;
+                break;
+            }
+        }
+        all_tasks[index] = {
+            id: id,
+            name: name,
+            text:text,
+            comment: comment,
+            completed: completed
+        };
+        all.all = all_tasks;
+        localStorage["all"] =JSON.stringify(all);
     }
 
-    static getLeaders()
+    static get()
     {
-        return Http.FetchGet("/leaderboard");
+        let all = localStorage["all"];
+        if(!all)
+            all = JSON.stringify({all:[], newId: 0});
+        all = JSON.parse(all);
+        return all.all;
     }
 
-    static getAboutText()
-    {
-        return Http.FetchGet("/about");
-    }
-
-    static isValidMail(text)
-    {
-        let reg = /[0-9A-Za-z.\-\_]+@[0-9A-Za-z.\-\_]+\.[A-Za-z\-\_]+/; // RegExp for mail
-        let match = text.match(reg);
-
-        return (match != null && match[0] == text);
-    }
-
-    static checkUser(mail, pwd)
-    {
-        debugger;
-        return Http.FetchPost("/login", {"loginEmail": mail, "password": pwd});
-    }
-
-    static registerUser(mail, nickname, pwd)
-    {
-        return Http.FetchPost("/users", {"login": nickname, "email": mail, "password": pwd});
-    }
-
-    static checkTest(id, answer)
-    {
-        return Http.FetchPost("/test", {"id": id, "answer": answer});
-    }
-
-    static addTestAdmin(name, text, answer)
-    {
-        return Http.FetchPost("/add-test", {"name": name, "text": text, "answer":answer});
-    }
-
-    static deleteTestAdmin(id)
-    {
-        return Http.FetchPost("/delete-test", {"id": id});
-    }
-
-    static changeTestAdmin(id, name, text, answer)
-    {
-        return Http.FetchPost("/change-test", {"id": id, "name": name, "text": text, "answer":answer});
-    }
-
-    static getUser()
-    {
-        return Http.FetchGet("/info");
-    }
-
-    static logoutUser()
-    {
-        return Http.FetchGet("/logout");
-    }
 }
 
 export default Services;

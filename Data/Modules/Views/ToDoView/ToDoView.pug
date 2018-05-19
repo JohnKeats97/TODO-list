@@ -20,15 +20,45 @@ div(class="wrapper wrapper_test")
                 div(class="adminForm" id=menu.id)
                     input(class="adminForm__testName" type="text" value=menu.name placeholder = "Название")
                     textarea(class="adminForm__testText" placeholder="Текст") #{menu.text}
-                    input(class="adminForm__testAnswer" type="text" value=menu.answer placeholder="Краткое описание")
+                    input(class="adminForm__testAnswer" type="text" value=menu.comment placeholder="Краткое описание")
                     div(class="adminForm__testAdminButton")
                         button(class="adminForm__button adminForm__button-delete" data-id=menu.id) Удалить
                         button(class="adminForm__button adminForm__button-change" data-id=menu.id) Изменить
                         label(class="container") Завершено
-                            input(type="checkbox")
+                            - if (menu.completed)
+                                input(type="checkbox" data-id=menu.id checked="checked")
+                            - else
+                                input(type="checkbox" data-id=menu.id)
                             span(class="checkmark")
 
+        - if (title == 3)
+            div(class="changeDeleteTest")
+            each menu in menus
+                - if (!menu.completed)
+                    div(class="adminForm" id=menu.id)
+                        input(class="adminForm__testName" type="text" value=menu.name placeholder = "Название")
+                        textarea(class="adminForm__testText" placeholder="Текст") #{menu.text}
+                        input(class="adminForm__testAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                        div(class="adminForm__testAdminButton")
+                            button(class="adminForm__button adminForm__button-delete" data-id=menu.id) Удалить
+                            button(class="adminForm__button adminForm__button-change" data-id=menu.id) Изменить
+                            label(class="container") Завершено
+                                input(type="checkbox" data-id=menu.id)
+                                span(class="checkmark")
 
-
+        - if (title == 4)
+            div(class="changeDeleteTest")
+            each menu in menus
+                - if (menu.completed)
+                    div(class="adminForm" id=menu.id)
+                        input(class="adminForm__testName" type="text" value=menu.name placeholder = "Название")
+                        textarea(class="adminForm__testText" placeholder="Текст") #{menu.text}
+                        input(class="adminForm__testAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                        div(class="adminForm__testAdminButton")
+                            button(class="adminForm__button adminForm__button-delete" data-id=menu.id) Удалить
+                            button(class="adminForm__button adminForm__button-change" data-id=menu.id) Изменить
+                            label(class="container") Завершено
+                                input(type="checkbox" data-id=menu.id checked="checked")
+                                span(class="checkmark")
 
 
