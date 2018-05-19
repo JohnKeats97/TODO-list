@@ -1,0 +1,36 @@
+.table {
+    border-collapse:collapse;
+    height: 200px;
+    width: 40vw;
+     border: 3px solid #4B2F5f;
+}
+
+.th {
+
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0px;
+    border-bottom: 3px solid #4B2F5f;
+    background-color:  #4B2F5f;
+}
+
+.tr {
+    background-color: #63476f;
+}
+
+.tr:hover {
+    background-color:  #4B2F5f;
+}
+
+.td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.td_score {
+    text-align: right;
+}
+
+
+
+

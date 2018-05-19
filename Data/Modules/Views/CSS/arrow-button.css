@@ -1,0 +1,27 @@
+.arrow-button{
+
+    font-size: 15px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 100px;
+    background: #63476f;
+    color: #FFFFFF;
+    cursor: pointer;
+    outline: none;
+    width:30px;
+    height:30px;
+    padding:0 8px;
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+    
+.arrow-button_disabled {
+    opacity: 0.48;
+    pointer-events: none;
+    user-select: none;
+}
+
+.arrow-button:hover {
+    background: #4B2F57;
+}

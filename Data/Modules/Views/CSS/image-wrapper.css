@@ -1,0 +1,9 @@
+.image-wrapper {
+  /*display: inline-block;*/
+	height: 30vh;
+	width: 30vh;
+	border: 3px solid white;
+  	border-radius: 30vh;
+  	overflow: hidden;
+  	background-color: white;
+}
