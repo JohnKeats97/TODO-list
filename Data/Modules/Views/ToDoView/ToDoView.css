@@ -1,9 +1,9 @@
-.adminForm {
+.ToDoForm {
     width: 55vw;
     margin: auto;
 }
 
-.adminForm__testName {
+.ToDoForm__testName {
     background: #cfdbe5d1;
     font-family: 'Jura', sans-serif;
     font-weight: bold;
@@ -18,7 +18,7 @@
     padding-left: 5px;
 }
 
-.adminForm__testAnswer {
+.ToDoForm__testAnswer {
     background: #cfdbe5d1;
     font-family: 'Jura', sans-serif;
     font-weight: bold;
@@ -33,7 +33,7 @@
     padding-left: 5px;
 }
 
-.adminForm__testText {
+.ToDoForm__testText {
     font-size: 17px;
     background: #ffffffd1;
     font-family: 'Jura', sans-serif;
@@ -48,7 +48,7 @@
 }
 
 
-.adminForm__button {
+.ToDoForm__button {
     border: none;
     height: 44px;
     font-size: 17px;
@@ -57,7 +57,7 @@
     width: 20vw;
 }
 
-.adminForm__button-delete {
+.ToDoForm__button-delete {
     font-family: 'Jura', sans-serif;
     font-weight: bold;
     font-style: normal;
@@ -75,7 +75,7 @@
     color: white;
 }
 
-.adminForm__button-change {
+.ToDoForm__button-change {
     font-family: 'Jura', sans-serif;
     font-weight: bold;
     font-style: normal;
@@ -111,7 +111,7 @@
     color: white;
 }
 
-.adminButtons_button {
+.ToDoButtons_button {
     font-family: 'Jura', sans-serif;
     font-weight: bold;
     font-style: normal;
@@ -126,7 +126,7 @@
     color: #011d21;
 }
 
-.adminButtons {
+.ToDoButtons {
     margin: auto;
 }
 
@@ -178,15 +178,15 @@
     background-color: #3195B6;
 }
 
-.adminForm__button-change:hover {
+.ToDoForm__button-change:hover {
     background-color: #3195B6;
 }
 
-.adminButtons_button:hover {
+.ToDoButtons_button:hover {
     background-color: #3195B6;
 }
 
-.adminForm__button-delete:hover {
+.ToDoForm__button-delete:hover {
     background-color: #dc746e;
 }
 

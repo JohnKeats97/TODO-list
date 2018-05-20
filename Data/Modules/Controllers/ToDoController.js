@@ -3,7 +3,7 @@
 import Services from "../Services.js";
 import MessageBox from "../Blocks/MessageBox/MessageBox.js";
 
-class AdminController
+class ToDoController
 {
     constructor(view)
     {
@@ -38,7 +38,7 @@ class AdminController
         this.view.changeData({title: mode, menus: result});
         this.buttonListener();
 
-        let deleteButtons = document.querySelectorAll(".adminForm__button-delete");
+        let deleteButtons = document.querySelectorAll(".ToDoForm__button-delete");
         deleteButtons.forEach((item) => {
             item.addEventListener('click', () => {
                 let id = item.dataset.id;
@@ -51,7 +51,7 @@ class AdminController
             });
         });
 
-        let changeButtons = document.querySelectorAll(".adminForm__button-change");
+        let changeButtons = document.querySelectorAll(".ToDoForm__button-change");
         changeButtons.forEach((item) => {
             item.addEventListener('click', () => {
                 let id = item.dataset.id;
@@ -111,4 +111,4 @@ class AdminController
     }
 }
 
-export default AdminController;
+export default ToDoController;
