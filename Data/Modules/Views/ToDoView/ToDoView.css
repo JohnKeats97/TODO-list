@@ -3,9 +3,20 @@
     margin: auto;
 }
 
+.ToDoForm__ListEmpty {
+    font-family: 'Jura', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    margin-top: 8vh;
+    width: 100%;
+    font-size: 8vh;
+    text-align: center;
+    user-select: none;
+}
+
 .animation {
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 0.8s;
 }
 
 .ToDoForm__TaskName {
@@ -57,11 +68,8 @@
     color: #011d21;
     user-select: none;
     border: none;
-    height: 44px;
-    font-size: 17px;
     cursor: pointer;
     outline: none;
-    width: 20vw;
 }
 
 .ToDoForm__button-delete {
@@ -73,12 +81,9 @@
     border-radius: 100px;
     background: #ff837d;
     margin-top: 2vh;
-    border: none;
     height: 56px;
     font-size: 3vh;
-    cursor: pointer;
-    outline: none;
-    width: 13vw;
+    width: 11.5vw;
 }
 
 .ToDoForm__button-change {
@@ -90,12 +95,9 @@
     border-radius: 100px;
     background: #3AAACF;
     margin-top: 2vh;
-    border: none;
     height: 56px;
     font-size: 3vh;
-    cursor: pointer;
-    outline: none;
-    width: 13vw;
+    width: 11.5vw;
 }
 
 .button-AddTask {
@@ -112,7 +114,7 @@
     font-size: 3vh;
     cursor: pointer;
     outline: none;
-    width: 13vw;
+    width: 11.5vw;
     color: #011d21;
 }
 
@@ -129,7 +131,7 @@
     font-size: 3vh;
     cursor: pointer;
     outline: none;
-    width: 10.8vw;
+    width: 10.5vw;
     color: #011d21;
 }
 

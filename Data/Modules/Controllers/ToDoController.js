@@ -10,6 +10,7 @@ class ToDoController
         this.view = view;
         this.active = 3;
         this.complited = 4;
+        this.empty = 5;
     }
 
     showAdd()
@@ -33,7 +34,7 @@ class ToDoController
             comment = comment.value.toString().trim();
             if (name && text) {
                 Services.add(name, text, comment);
-                new MessageBox("Действие добавлено");
+                new MessageBox("Task added");
             }
         });
     }
@@ -41,7 +42,10 @@ class ToDoController
     showToDo(mode = 2) {
         let result = Services.get();
         result = result.reverse();
-        this.view.changeData({title: mode, menus: result});
+        if (result.length > 0)
+            this.view.changeData({title: mode, menus: result});
+        else
+            this.view.changeData({title: this.empty, menus: result});
         this.buttonListener();
 
         setTimeout(()=>{
@@ -57,7 +61,7 @@ class ToDoController
                 if (task) {
                     Services.delete(id);
                     task.remove();
-                    new MessageBox("Действие удалено");
+                    new MessageBox("Task deleted");
                 }
             });
         });
@@ -78,7 +82,7 @@ class ToDoController
                     if (name && text) {
                         Services.change(id, name, text, completed, comment);
                         this.showToDo(mode);
-                        new MessageBox("Действие изменено");
+                        new MessageBox("Task changed");
                     }
                 }
             });

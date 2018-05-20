@@ -5,12 +5,7 @@ let generateMessageBox = require("./MessageBox.pug");
 
 class MessageBox
 {
-    /**
-     *
-     * @param title - Message Box title
-     * @param message - Message Box message
-     * @param [okAction] - action on ok button click
-     */
+
     constructor(title, message, okAction = null)
     {
         this.view = new BaseView(document.body, generateMessageBox, {message, title}, "messageBox");
