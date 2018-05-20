@@ -2,7 +2,6 @@
 
 import Services from "../Services.js";
 import MessageBox from "../Blocks/MessageBox/MessageBox.js";
-import Loader from "../Views/LoaderView/LoaderView.js";
 
 class AdminController
 {
@@ -27,23 +26,17 @@ class AdminController
             text = text.value.toString().trim();
             comment = comment.value.toString().trim();
             if (name && text) {
-                let loader = new Loader();
-                loader.show();
                 Services.add(name, text, comment);
-                loader.hide();
                 new MessageBox("Действие добавлено");
             }
         });
     }
 
     showToDo(mode = 2) {
-        let loader = new Loader();
-        loader.show();
         let result = Services.get();
         result = result.reverse();
         this.view.changeData({title: mode, menus: result});
         this.buttonListener();
-        loader.hide();
 
         let deleteButtons = document.querySelectorAll(".adminForm__button-delete");
         deleteButtons.forEach((item) => {
@@ -51,11 +44,8 @@ class AdminController
                 let id = item.dataset.id;
                 let task = document.getElementById(id);
                 if (task) {
-                    let loader = new Loader();
-                    loader.show();
                     Services.delete(id);
                     task.remove();
-                    loader.hide();
                     new MessageBox("Действие удалено");
                 }
             });
@@ -75,21 +65,14 @@ class AdminController
                     text = text.toString().trim();
                     comment = comment.toString().trim();
                     if (name && text) {
-                        let loader = new Loader();
-                        loader.show();
                         Services.change(id, name, text, completed, comment);
-                        loader.hide();
                         this.showToDo(mode);
                         new MessageBox("Действие изменено");
                     }
                 }
             });
         });
-
     }
-
-
-
 
     onShow()
     {
@@ -114,8 +97,6 @@ class AdminController
     {
         this.view.hide();
         this.onHide();
-        let loader = new Loader();
-        loader.hide();
     }
 
     onHide(){
@@ -124,17 +105,9 @@ class AdminController
 
     show()
     {
-        let loader = new Loader();
-        loader.show();
         this.onShow();
-        loader.hide();
         this.view.show();
         this.showToDo()
-    }
-
-    goBackHandler()
-    {
-
     }
 }
 

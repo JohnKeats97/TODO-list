@@ -1,19 +1,5 @@
-/**
-    Widget module
-    provides a basic widget functionality
-    a widget is represented as a <div></div> by default
-    If a tag is not specified, than a new object is not created, but existingElem is used
- */
-
 class Widget
 {
-    /**
-     *
-     * @param parent - parent element in DOM tree
-     * @param tag - current widget's tag
-     * @param className - its CSS Class
-     * @param existingElem - if this value is not null, then wrap Widget around it instead of creating a new one
-     */
     constructor(parent = document.body, tag = "div", className = "", existingElem = null)
     {
         if(existingElem)
@@ -26,7 +12,6 @@ class Widget
         }
     }
 
-    // Appearance
     show()
     {
         for(let i = 0; i < this.element.childNodes.length; i++) {
