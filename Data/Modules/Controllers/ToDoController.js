@@ -42,10 +42,7 @@ class ToDoController
     showToDo(mode = 2) {
         let result = Services.get();
         result = result.reverse();
-        if (result.length > 0)
-            this.view.changeData({title: mode, menus: result});
-        else
-            this.view.changeData({title: this.empty, menus: result});
+        this.view.changeData({title: mode, menus: result});
         this.buttonListener();
 
         setTimeout(()=>{
@@ -60,7 +57,7 @@ class ToDoController
                 let task = document.getElementById(id);
                 if (task) {
                     Services.delete(id);
-                    task.remove();
+                    this.showToDo(mode);
                     new MessageBox("Task deleted");
                 }
             });
@@ -87,6 +84,11 @@ class ToDoController
                 }
             });
         });
+
+        if (!deleteButtons.length) {
+            this.view.changeData({title: this.empty, menus: result});
+            this.buttonListener();
+        }
     }
 
     onShow()
