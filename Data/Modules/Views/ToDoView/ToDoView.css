@@ -118,6 +118,7 @@
 }
 
 .ToDoButtons_button {
+    /*box-shadow: none;*/
     user-select: none;
     font-family: 'Jura', sans-serif;
     font-weight: bold;

@@ -14,11 +14,25 @@ class Widget
 
     show()
     {
+        for(let i = 0; i < this.element.childNodes.length; i++) {
+            if(this.element.childNodes[i].nodeType === Node.ELEMENT_NODE) {
+                this.element.childNodes[i].style.visibility = "visible";
+            }
+        }
+        this.element.style.visibility = "visible";
+
         this.onShow();
     }
 
     hide()
     {
+        for(let i = 0; i < this.element.childNodes.length; i++) {
+            if(this.element.childNodes[i].nodeType === Node.ELEMENT_NODE) {
+                this.element.childNodes[i].style.visibility = "hidden";
+            }
+        }
+        this.element.style.visibility = "hidden";
+
         this.onHide();
     }
 

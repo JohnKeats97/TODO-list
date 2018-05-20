@@ -95,13 +95,34 @@ class ToDoController
         let _add = document.querySelectorAll(".button-add")[0];
         _add.addEventListener('click', function () {
             this.showAdd();
+            let button = document.querySelectorAll(".button-add")[0];
+            button.style.cssText =  "box-shadow: 0 0 0 2px #cfdbe5d1;" +
+                                    "background-color: #3195B6;";
         }.bind(this));
+
         let _all = document.querySelectorAll(".button-all")[0];
-        _all.addEventListener('click', function () {this.showToDo()}.bind(this));
+        _all.addEventListener('click', function () {
+            this.showToDo();
+            let button = document.querySelectorAll(".button-all")[0];
+            button.style.cssText =  "box-shadow: 0 0 0 2px #cfdbe5d1;" +
+                                    "background-color: #3195B6;";
+        }.bind(this));
+
         let _active = document.querySelectorAll(".button-active")[0];
-        _active.addEventListener('click', function () {this.showToDo(this.active)}.bind(this));
+        _active.addEventListener('click', function () {
+            this.showToDo(this.active);
+            let button = document.querySelectorAll(".button-active")[0];
+            button.style.cssText =  "box-shadow: 0 0 0 2px #cfdbe5d1;" +
+                                    "background-color: #3195B6;";
+        }.bind(this));
+
         let _completed = document.querySelectorAll(".button-completed")[0];
-        _completed.addEventListener('click', function () {this.showToDo(this.complited)}.bind(this));
+        _completed.addEventListener('click', function () {
+            this.showToDo(this.complited);
+            let button = document.querySelectorAll(".button-completed")[0];
+            button.style.cssText =  "box-shadow: 0 0 0 2px #cfdbe5d1;" +
+                                    "background-color: #3195B6;";
+        }.bind(this));
     }
 
     hide()
