@@ -8,57 +8,57 @@ div(class="wrapper wrapper_todo")
             button(class="button-completed ToDoButtons_button") Завершенные
 
         - if (title == 1)
-            div(class="ToDoForm addTask")
+            div(class="ToDoForm animation")
                 input(class="ToDoForm__TaskName name-AddTask" type="text" value="" placeholder="Название")
                 textarea(class="ToDoForm__TaskText text-AddTask" placeholder="Текст")
                 input(class="ToDoForm__TaskAnswer answer-AddTask" type="text" value="" placeholder="Краткое описание")
                 button(class="button-AddTask") Добавить
 
         - if (title == 2)
-            div(class="changeDeleteTask")
-            each menu in menus
-                div(class="ToDoForm" id=menu.id)
-                    input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
-                    textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
-                    input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
-                    div(class="ToDoForm__TaskToDoButton")
-                        button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
-                        button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
-                        label(class="container") Завершено
-                            - if (menu.completed)
-                                input(type="checkbox" data-id=menu.id checked="checked")
-                            - else
-                                input(type="checkbox" data-id=menu.id)
-                            span(class="checkmark")
+            div(class="animation")
+                each menu in menus
+                    div(class="ToDoForm" id=menu.id)
+                        input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
+                        textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
+                        input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                        div(class="ToDoForm__TaskToDoButton")
+                            button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
+                            button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
+                            label(class="container") Завершено
+                                - if (menu.completed)
+                                    input(type="checkbox" data-id=menu.id checked="checked")
+                                - else
+                                    input(type="checkbox" data-id=menu.id)
+                                span(class="checkmark")
 
         - if (title == 3)
-            div(class="changeDeleteTask")
-            each menu in menus
-                - if (!menu.completed)
-                    div(class="ToDoForm" id=menu.id)
-                        input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
-                        textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
-                        input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
-                        div(class="ToDoForm__TaskToDoButton")
-                            button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
-                            button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
-                            label(class="container") Завершено
-                                input(type="checkbox" data-id=menu.id)
-                                span(class="checkmark")
+            div(class="animation")
+                each menu in menus
+                    - if (!menu.completed)
+                        div(class="ToDoForm" id=menu.id)
+                            input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
+                            textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
+                            input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                            div(class="ToDoForm__TaskToDoButton")
+                                button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
+                                button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
+                                label(class="container") Завершено
+                                    input(type="checkbox" data-id=menu.id)
+                                    span(class="checkmark")
 
         - if (title == 4)
-            div(class="changeDeleteTask")
-            each menu in menus
-                - if (menu.completed)
-                    div(class="ToDoForm" id=menu.id)
-                        input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
-                        textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
-                        input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
-                        div(class="ToDoForm__TaskToDoButton")
-                            button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
-                            button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
-                            label(class="container") Завершено
-                                input(type="checkbox" data-id=menu.id checked="checked")
-                                span(class="checkmark")
+            div(class="animation")
+                each menu in menus
+                    - if (menu.completed)
+                        div(class="ToDoForm" id=menu.id)
+                            input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
+                            textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
+                            input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                            div(class="ToDoForm__TaskToDoButton")
+                                button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
+                                button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
+                                label(class="container") Завершено
+                                    input(type="checkbox" data-id=menu.id checked="checked")
+                                    span(class="checkmark")
 
 

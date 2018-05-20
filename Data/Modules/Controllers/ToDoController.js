@@ -16,6 +16,12 @@ class ToDoController
     {
         this.view.changeData({title: 1, menus: []});
         this.buttonListener();
+
+        setTimeout(()=>{
+            let wrapperToDo = document.getElementsByClassName("animation")[0];
+            wrapperToDo.style.opacity = "1";
+        }, 1);
+
         let addButton = document.querySelectorAll(".button-AddTask")[0];
         addButton.addEventListener('click', function ()
         {
@@ -37,6 +43,11 @@ class ToDoController
         result = result.reverse();
         this.view.changeData({title: mode, menus: result});
         this.buttonListener();
+
+        setTimeout(()=>{
+            let wrapperToDo = document.getElementsByClassName("animation")[0];
+            wrapperToDo.style.opacity = "1";
+        }, 1);
 
         let deleteButtons = document.querySelectorAll(".ToDoForm__button-delete");
         deleteButtons.forEach((item) => {

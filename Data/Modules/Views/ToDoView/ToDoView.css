@@ -3,6 +3,11 @@
     margin: auto;
 }
 
+.animation {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
 .ToDoForm__TaskName {
     background: #cfdbe5d1;
     font-family: 'Jura', sans-serif;
