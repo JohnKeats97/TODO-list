@@ -99,7 +99,7 @@ class ToDoController
 
     addButtonBox(button) {
         button.style.cssText =  "box-shadow: 0 0 0 2px #cfdbe5d1;" +
-            "background-color: #3195B6;";
+            "background-color: #2b7f9c;";
     }
 
     buttonListener() {
