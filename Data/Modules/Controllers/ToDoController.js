@@ -16,12 +16,12 @@ class ToDoController
     {
         this.view.changeData({title: 1, menus: []});
         this.buttonListener();
-        let addButton = document.querySelectorAll(".button-AddTest")[0];
+        let addButton = document.querySelectorAll(".button-AddTask")[0];
         addButton.addEventListener('click', function ()
         {
-            let name = document.querySelectorAll(".name-AddTest")[0];
-            let text = document.querySelectorAll(".text-AddTest")[0];
-            let comment = document.querySelectorAll(".answer-AddTest")[0];
+            let name = document.querySelectorAll(".name-AddTask")[0];
+            let text = document.querySelectorAll(".text-AddTask")[0];
+            let comment = document.querySelectorAll(".answer-AddTask")[0];
             name = name.value.toString().trim();
             text = text.value.toString().trim();
             comment = comment.value.toString().trim();

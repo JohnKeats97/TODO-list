@@ -20,8 +20,6 @@
 
 .page__header {
     user-select: none;
-    z-index: 100;
-    outline: none;
     height: 5vh;
     font-size: 10vh;
     position: static;

@@ -5,7 +5,6 @@ import ToDo from "./Modules/Views/ToDoView/ToDoView.js";
 // CSS
 import "./CSS/body.css"
 import "./CSS/page.css"
-import "./Modules/Views/CSS/button.css"
 import "./Modules/Views/CSS/wrapper.css"
 import "./Modules/Views/CSS/header2.css"
 import "./Modules/Views/ToDoView/ToDoView.css"
