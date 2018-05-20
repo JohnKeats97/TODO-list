@@ -131,7 +131,7 @@
     font-size: 3vh;
     cursor: pointer;
     outline: none;
-    width: 10.5vw;
+    width: 10.8vw;
     color: #011d21;
 }
 
@@ -148,7 +148,7 @@
 }
 
 .button-add {
-    margin-right: 5vw;
+    margin-right: 4vw;
 }
 
 .button-AddTask:hover {
