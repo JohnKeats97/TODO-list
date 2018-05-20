@@ -2,31 +2,31 @@ div(class="wrapper wrapper_todo")
     div(class="wrapper__header header2")
     div(class="wrapper__main")
         div(class="ToDoButtons")
-            button(class="button-add ToDoButtons_button") Добавить
-            button(class="button-all ToDoButtons_button") Все
-            button(class="button-active ToDoButtons_button") Активные
-            button(class="button-completed ToDoButtons_button") Завершенные
+            button(class="button-add ToDoButtons_button") Add
+            button(class="button-all ToDoButtons_button") All
+            button(class="button-active ToDoButtons_button") Active
+            button(class="button-completed ToDoButtons_button") Completed
 
         - if (title == 1)
             div(class="ToDoForm animation")
-                input(class="ToDoForm__TaskName name-AddTask" type="text" value="" placeholder="Название")
-                textarea(class="ToDoForm__TaskText text-AddTask" placeholder="Текст")
-                input(class="ToDoForm__TaskAnswer answer-AddTask" type="text" value="" placeholder="Краткое описание")
-                button(class="button-AddTask") Добавить
+                input(class="ToDoForm__TaskName name-AddTask" type="text" value="" placeholder="Name")
+                textarea(class="ToDoForm__TaskText text-AddTask" placeholder="Text")
+                input(class="ToDoForm__TaskAnswer answer-AddTask" type="text" value="" placeholder="Comment")
+                button(class="button-AddTask") Add
 
         - if (title == 2)
             div(class="animation")
                 each menu in menus
                     div(class="ToDoForm" id=menu.id)
-                        input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
-                        textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
-                        input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                        input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Name")
+                        textarea(class="ToDoForm__TaskText" placeholder="Text") #{menu.text}
+                        input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Comment")
                         div(class="ToDoForm__TaskToDoButton")
-                            button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
-                            button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
-                            label(class="container") Завершено
+                            button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Delete
+                            button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Change
+                            label(class="container") Completed
                                 - if (menu.completed)
-                                    input(type="checkbox" data-id=menu.id checked="checked")
+                                     input(type="checkbox" data-id=menu.id checked="checked")
                                 - else
                                     input(type="checkbox" data-id=menu.id)
                                 span(class="checkmark")
@@ -36,13 +36,13 @@ div(class="wrapper wrapper_todo")
                 each menu in menus
                     - if (!menu.completed)
                         div(class="ToDoForm" id=menu.id)
-                            input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
-                            textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
-                            input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                            input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Name")
+                            textarea(class="ToDoForm__TaskText" placeholder="Text") #{menu.text}
+                            input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Comment")
                             div(class="ToDoForm__TaskToDoButton")
-                                button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
-                                button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
-                                label(class="container") Завершено
+                                button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Delete
+                                button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Change
+                                label(class="container") Completed
                                     input(type="checkbox" data-id=menu.id)
                                     span(class="checkmark")
 
@@ -51,13 +51,13 @@ div(class="wrapper wrapper_todo")
                 each menu in menus
                     - if (menu.completed)
                         div(class="ToDoForm" id=menu.id)
-                            input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Название")
-                            textarea(class="ToDoForm__TaskText" placeholder="Текст") #{menu.text}
-                            input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Краткое описание")
+                            input(class="ToDoForm__TaskName" type="text" value=menu.name placeholder = "Name")
+                            textarea(class="ToDoForm__TaskText" placeholder="Text") #{menu.text}
+                            input(class="ToDoForm__TaskAnswer" type="text" value=menu.comment placeholder="Comment")
                             div(class="ToDoForm__TaskToDoButton")
-                                button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Удалить
-                                button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Изменить
-                                label(class="container") Завершено
+                                button(class="ToDoForm__button ToDoForm__button-delete" data-id=menu.id) Delete
+                                button(class="ToDoForm__button ToDoForm__button-change" data-id=menu.id) Change
+                                label(class="container") Completed
                                     input(type="checkbox" data-id=menu.id checked="checked")
                                     span(class="checkmark")
 

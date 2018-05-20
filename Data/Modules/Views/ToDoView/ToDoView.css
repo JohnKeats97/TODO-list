@@ -54,6 +54,7 @@
 
 
 .ToDoForm__button {
+    color: #011d21;
     user-select: none;
     border: none;
     height: 44px;
@@ -78,7 +79,6 @@
     cursor: pointer;
     outline: none;
     width: 13vw;
-    color: white;
 }
 
 .ToDoForm__button-change {
@@ -96,7 +96,6 @@
     cursor: pointer;
     outline: none;
     width: 13vw;
-    color: white;
 }
 
 .button-AddTask {
@@ -114,7 +113,7 @@
     cursor: pointer;
     outline: none;
     width: 13vw;
-    color: white;
+    color: #011d21;
 }
 
 .ToDoButtons_button {
@@ -130,7 +129,7 @@
     font-size: 3vh;
     cursor: pointer;
     outline: none;
-    width: 13vw;
+    width: 10.8vw;
     color: #011d21;
 }
 
@@ -139,11 +138,11 @@
 }
 
 .button-active {
-    margin-left: 5vw;
+    margin-left: 4vw;
 }
 
 .button-completed {
-    margin-left: 5vw;
+    margin-left: 4vw;
 }
 
 .button-add {
